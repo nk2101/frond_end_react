@@ -18,11 +18,6 @@ import Dashboard from "./Components/DashBoard";
 import RideRequestMap from "./Components/SingleComponent";
 import DriverDashboard from "./Components/DriverDashboard";
 
-const MyComponent = () => {
-  const location = useLocation(); // ✅ this is valid
-  return <div>Current path: {location.pathname}</div>;
-};
-
 function App() {
   return (
     <div>
@@ -32,8 +27,8 @@ function App() {
           <Route path="/signup" element={<Signup />} />
           <Route path="/login" element={<Login />} />
           <Route path="/dashboard" element={<Dashboard />} />
-          <Route path="/passenger" element={ <RideRequestMap />} />
-          <Route path="/driver" element={ <DriverDashboard />} />
+          <Route path="/passenger" element={<RideRequestMap />} />
+          <Route path="/driver" element={<DriverDashboard />} />
         </Routes>
       </BrowserRouter>
     </div>

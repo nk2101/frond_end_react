@@ -14,18 +14,18 @@ const Login = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const res = await axios.post("http:localhost:3001/signup", form);
+      const res = await axios.post(`${process.env.REACT_API}/login`, form);
       saveToken(res.data.token);
       navigate("/dashboard");
     } catch (err) {
       navigate("/dashboard");
-      alert(err.response.data.message || "Login failed");
+      // alert(err.response.data.message || "Login failed");
     }
   };
 
   return (
     <form onSubmit={handleSubmit}>
-      <div style={{ border: "1px black solid", textAlign: "center" }}>
+      <div style={{ textAlign: "center" }}>
         <h2>Log In</h2>
         <input
           name="email"

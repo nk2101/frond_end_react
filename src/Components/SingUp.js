@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import axios from "axios";
 import { saveToken } from "../Utils/auth";
 import { useNavigate } from "react-router-dom";
+import Alert from '@mui/material/Alert';
 
 const Signup = () => {
   const [form, setForm] = useState({ name: "", email: "", password: "" });
@@ -13,8 +14,9 @@ const Signup = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    <Alert severity="success">This is a success Alert.</Alert>
     try {
-      const res = await axios.post("http:localhost:3001/signup", form);
+      const res = await axios.post(`${process.env.REACT_API}/signup`, form);
       saveToken(res.data.token);
       navigate("/dashboard");
     } catch (err) {
@@ -25,7 +27,7 @@ const Signup = () => {
 
   return (
     <form onSubmit={handleSubmit}>
-      <div style={{ border: "1px black solid", textAlign: "center" }}>
+      <div style={{textAlign: "center" }}>
         <h2>Sign Up</h2>
         <div>
           <input

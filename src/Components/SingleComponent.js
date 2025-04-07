@@ -14,7 +14,7 @@ const containerStyle = {
 
 export default function RideRequestMap() {
   const { isLoaded } = useJsApiLoader({
-    googleMapsApiKey: "AIzaSyBoUIrQCGUbFsvBsSByRJ-kPHGLtRDNC3c",
+    googleMapsApiKey: process.env.GOOGLE_MAP_API,
   });
 
   const [pickupAddress, setPickupAddress] = useState("");
@@ -55,7 +55,6 @@ export default function RideRequestMap() {
       setPickupCoords(pickup);
       setDropoffCoords(dropoff);
 
-      // Directions
       const directionsService = new google.maps.DirectionsService();
       directionsService.route(
         {
@@ -67,9 +66,8 @@ export default function RideRequestMap() {
           if (status === "OK") {
             setDirections(result);
 
-            // Optionally send ride to backend
             await axios.post(
-              `http://localhost:5000/api/rides`,
+              `${process.env.REACT_API}/api/rides`,
               {
                 pickup,
                 dropoff,

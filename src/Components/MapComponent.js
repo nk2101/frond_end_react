@@ -9,7 +9,7 @@ const containerStyle = {
 
 export default function MapComponent({ pickup, dropoff }) {
   const { isLoaded } = useJsApiLoader({
-    googleMapsApiKey:   "AIzaSyBoUIrQCGUbFsvBsSByRJ-kPHGLtRDNC3c",
+    googleMapsApiKey:  process.env.GOOGLE_MAP_API,
   });
 
   const [directions, setDirections] = useState(null);
